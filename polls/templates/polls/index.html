@@ -1,0 +1,37 @@
+{% block content %}
+{% if user.is_authenticated %}
+        <form action='logout/' method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Logout"/>
+        </form>    
+        {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+    <h3>Give Feedback!</h3>
+    <form action='add/' method="POST">
+        {% csrf_token %}
+        <input type="text" name="feedback"/><br/>
+        <input type="submit" value="Send"/>
+    </form>    
+    <br/>
+    <h2>Donate money</h2>
+    <form action='transfer/' method="GET">
+        <span>Amount:</span><br/>
+        <input type="number" name="amount"/><br/>
+
+        <input type="submit" value="Transfer"/>
+    </form>
+{% else %}
+    <p>You are not logged in</p>
+    <form action='login/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Login"/>
+    </form>
+{% endif %}
+{% endblock %}

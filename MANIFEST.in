@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+recursive-include polls/static *
+recursive-include polls/templates *
+include create_db.py
+include csrf.html
+include db.sql
