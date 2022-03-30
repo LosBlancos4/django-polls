@@ -6,7 +6,10 @@ Polls
 Polls is a Django app to conduct web-based polls. For each question,
 visitors can choose between a fixed number of answers.
 
-Detailed documentation is in the "docs" directory.
+In addition, there is a possibility to give feedback to the admin 
+as well as give donations for maintanance of the app
+
+Detailed documentation is in the DOCS file.
 
 Quick start
 -----------
@@ -26,12 +29,23 @@ Quick start
     path('<int:question_id>/vote/logout/', LogoutView.as_view(next_page='/')),
     path('', include('polls.urls'))
 
-3. Init sqlite database by running
+    Note! Add the following methods in the module:
+        from django.urls import include, path
+        from django.contrib.auth.views import LoginView, LogoutView
+
+3. Add LOGIN_URLs parameters in the project settings:
+        
+    LOGIN_URL = '/login/'
+    LOGIN_REDIRECT_URL = '/'
+
+4. Run ``python manage.py migrate`` to create the polls models.
+
+5. Create an sqlite database by running in django-polls directory
    python3 -m create_db.py
 
-3. Run ``python manage.py migrate`` to create the polls models.
+   Move db.sqlite3 file in main directory
 
-4. Start the development server and visit http://127.0.0.1:8000/admin/
+5. Start the development server and visit http://127.0.0.1:8000/admin/
    to create a poll (you'll need the Admin app enabled).
 
-5. Visit http://127.0.0.1:8000/ to participate in the poll.
+6. Visit http://127.0.0.1:8000/ to participate in the poll.

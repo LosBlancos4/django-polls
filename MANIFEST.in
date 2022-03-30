@@ -5,3 +5,4 @@ recursive-include polls/templates *
 include create_db.py
 include csrf.html
 include db.sql
+include DOCS.md
