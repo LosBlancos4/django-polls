@@ -41,7 +41,7 @@ Quick start
 4. Run ``python manage.py migrate`` to create the polls models.
 
 5. Create an sqlite database by running in django-polls directory
-   python3 -m create_db.py
+   ``python3 -m create_db.py``
 
    Move db.sqlite3 file in main directory
 
