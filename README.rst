@@ -33,7 +33,7 @@ Quick start
         from django.urls import include, path
         from django.contrib.auth.views import LoginView, LogoutView
 
-3. Add LOGIN_URLs parameters in the project settings:
+3. Add LOGIN_URLs parameters in the project settings::
         
     LOGIN_URL = '/login/'
     LOGIN_REDIRECT_URL = '/'
